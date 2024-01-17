@@ -5,5 +5,34 @@
 
 <mapper namespace="com.myweb.www.repository.BoardDAO">
 
+<insert id="insert">
+insert into board(title, writer, content)
+values(#{title}, #{writer}, #{content})
+</insert>
+
+<select id="selectAll" resultType="com.myweb.www.domain.BoardVO">
+select * from board order by bno desc
+</select>
+
+<select id="selectOne" resultType="com.myweb.www.domain.BoardVO">
+select * from board where bno = #{bno}
+</select>
+
+<update id="update">
+update board set title = #{title}, content = #{content}, mod_at = now() where bno = #{bno}
+</update>
+
+<update id="updateReadCount">
+update board set read_count = read_count + 1 where bno = #{bno}
+</update>
+
+<delete id="delete">
+delete from board where bno = #{bno}
+</delete>
+
+<select id="getBno" resultType="long">
+select max(bno) from board
+</select>
+
 </mapper>
   
