@@ -3,6 +3,7 @@ package com.myweb.www.repository;
 import java.util.List;
 
 import com.myweb.www.domain.BoardVO;
+import com.myweb.www.domain.PaginVO;
 
 public interface BoardDAO {
 
@@ -21,6 +22,8 @@ public interface BoardDAO {
 	int delete(int bno);
 
 	long getBno();
+
+	int selectCount(PaginVO pgvo);
 
 
 

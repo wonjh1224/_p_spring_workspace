@@ -30,4 +30,14 @@ cmt_qty int default 0,
 has_file int default 0,
 primary key(bno));
 
---- 2024 - 01 - 17 ---
+-- 2024.01.17 학원 --
+-- board --
+1.register
+2.list
+3.detail
+4.modify
+5.delete
+---------------------
+집 
+
+

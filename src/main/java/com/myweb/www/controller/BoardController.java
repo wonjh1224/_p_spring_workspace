@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myweb.www.domain.BoardVO;
+import com.myweb.www.domain.PaginVO;
+import com.myweb.www.handler.PagingHandler;
 import com.myweb.www.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -41,10 +43,15 @@ public class BoardController {
 	}
 
 	@GetMapping("list")
-	public String list(Model m) {
-		List<BoardVO> list = bsv.getList();
+	public String list(Model m, PaginVO pgvo) {
+		List<BoardVO> list = bsv.getList(pgvo);
 		
+		int totalCount = bsv.getTotalCount(pgvo);
+		
+		PagingHandler ph = new PagingHandler(pgvo, totalCount);
+			
 		m.addAttribute("list", list);
+		m.addAttribute("ph", ph);
 		
 		return "/board/list";
 	}

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.myweb.www.domain.BoardVO;
+import com.myweb.www.domain.PaginVO;
 import com.myweb.www.repository.BoardDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -55,6 +56,12 @@ public class BoardServiceImpl implements BoardService{
 	public int remove(int bno) {
 		// TODO Auto-generated method stub
 		return bdao.delete(bno);
+	}
+
+	@Override
+	public int getTotalCount(PaginVO pgvo) {
+		// TODO Auto-generated method stub
+		return bdao.selectCount(pgvo);
 	}
 
 
