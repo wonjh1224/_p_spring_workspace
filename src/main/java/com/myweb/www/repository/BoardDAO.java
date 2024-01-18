@@ -9,8 +9,6 @@ public interface BoardDAO {
 
 	void insert(BoardVO bvo);
 
-	List<BoardVO> selectAll();
-
 	BoardVO selectOne(int bno);
 
 	void update(long bno);
@@ -24,6 +22,8 @@ public interface BoardDAO {
 	long getBno();
 
 	int selectCount(PaginVO pgvo);
+
+	List<BoardVO> selectList(PaginVO pgvo);
 
 
 

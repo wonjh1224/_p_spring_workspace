@@ -11,7 +11,7 @@ public interface BoardService {
 
 	long register(BoardVO bvo);
 
-	List<BoardVO> getList();
+	List<BoardVO> getList(PaginVO pgvo);
 
 	BoardVO detail(int bno);
 

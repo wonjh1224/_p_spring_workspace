@@ -30,14 +30,30 @@ cmt_qty int default 0,
 has_file int default 0,
 primary key(bno));
 
--- 2024.01.17 학원 --
+-- 2024.01.17 --
+학원
 -- board --
 1.register
 2.list
 3.detail
 4.modify
 5.delete
----------------------
-집 
+집
+1.paging
+-- 2024.01.18 --
+학원
+-- board -- 
+search
+
+-- comment --
+CREATE TABLE comment(
+cno BIGINT AUTO_INCREMENT,
+bno BIGINT NOT NULL,
+writer VARCHAR(100) NOT NULL,
+content TEXT NOT NULL,
+reg_at DATETIME DEFAULT NOW(),
+mod_at DATETIME DEFAULT NOW(),
+PRIMARY KEY(cno));
+
 
 

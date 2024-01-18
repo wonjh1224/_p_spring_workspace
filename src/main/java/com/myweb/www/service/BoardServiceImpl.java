@@ -27,9 +27,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardVO> getList() {
+	public List<BoardVO> getList(PaginVO pgvo) {
 		// TODO Auto-generated method stub
-		return bdao.selectAll();
+		return bdao.selectList(pgvo);
 	}
 
 	@Override
@@ -63,6 +63,8 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return bdao.selectCount(pgvo);
 	}
+
+
 
 
 

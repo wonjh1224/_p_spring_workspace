@@ -52,14 +52,45 @@ input {
 			readonly="readonly">${bvo.content }</textarea>
 	</div>
 
+	<!-- 댓글 등록 라인 -->
+	<div class="input-group mb-3">
+		<span class="input-group-text" id="cmtWriter">tester</span>
+		<input type="text" id="cmtText" placeholder="댓글 작성.." class="form-control" 
+		aria-label="Recipient's username" aria-describedby="button-addon2">
+		<button type="submit" class="btn btn-outline-success" id="cmtAddBtn">등록</button>
+	</div>
+	
+		<!-- 댓글 표시 라인 -->
+	<div class="accordion" id="accordionExample">
+		<div class="accordion-item">
+			<h2 class="accordion-header">
+				<button class="accordion-button" type="button"
+					data-bs-toggle="collapse" data-bs-target="#collapseOne"
+					aria-expanded="true" aria-controls="collapseOne">cno,
+					writer, reg_date</button>
+			</h2>
+			<div id="collapseOne" class="accordion-collapse collapse show"
+				data-bs-parent="#accordionExample">
+				<div class="accordion-body">
+					<strong>댓글</strong>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<br> <a href="/board/list">
 		<button type="button" class="btn btn-secondary">List</button>
 	</a> <a href="/board/modify/${bvo.bno }">
 		<button type="button" class="btn btn-success">수정 페이지로 이동</button>
 	</a>
+	
+	
 </div>
 
-
+<script>
+	let bnoVal = `<c:out value="${bvo.bno}"/>`;
+</script>
 
 <script type="text/javascript">
 	const isMod = `<c:out value = "${isMod}"/>`;
@@ -68,6 +99,9 @@ input {
 	}
 </script>
 
+
+
+<script type="text/javascript" src="/resources/js/boardComment.js"></script>
 
 
 
