@@ -10,4 +10,8 @@ insert into comment(bno, writer, content)
 values(#{bno}, #{writer}, #{content})
 </insert>
 
+<select id="selectList" resultType="com.myweb.www.domain.CommentVO">
+select * from comment where bno = #{bno}
+</select>
+
 </mapper>

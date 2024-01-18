@@ -24,7 +24,6 @@ document.getElementById("cmtAddBtn").addEventListener('click', ()=>{
         })
     };
 })
-
 async function postCommentToServer(cmtData){
     try {
         
@@ -47,11 +46,43 @@ async function postCommentToServer(cmtData){
     }
 }
 
-async function getCommentListFromServer(bno, page){
+async function getCommentListFromServer(bno){
+    try {
+        
+        const resp = await fetch("/comment/"+bno);
+        const result = await resp.json(); //commentList return
+        console.log("list", result);
+        return result;
 
+    } catch (error) {
+        console.log(error);
+    }
 
 }
 
-function spreadCommentList(bno, page){
-    
+function spreadCommentList(bno){
+    getCommentListFromServer(bno).then(result=>{
+        console.log(result);
+
+ const div = document.getElementById('accordionExample');
+        if(result.length > 0){
+ 
+            for(let i=0; i<result.length; i++){
+                let add = `<div class="accordion-item"> `;
+                add += `<h2 class="accordion-header">`;
+                add += ` <button class="accordion-button" type="button"`
+                add += `data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="true" aria-controls="collapse${i}">`;
+                add += `cno.${result[i].cno} 작성자 : ${result[i].writer}</button></h2>`;
+                add += `<div id="collapse${i}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">`;
+                add += `<div class="accordion-body" data-cno="${result[i].cno}" data-writer="${result.writer}">`;
+                add += `<input type="text" class="form-control cmtText" value="${result[i].content}"><br>`
+                add += `<button type="button" data-cno="${result[i].cno}" class="btn btn-sm btn-outline-success cmtModBtn" data-bs-toggle="modal" data-bs-target="#myModal">수정</button><span> | </span>`;
+                add += `<button type="button" data-cno="${result[i].cno}" class="btn btn-sm btn-outline-danger cmtDelBtn">삭제</button>`
+                add += `</div></div></div>`;
+                div.innerHTML += add;
+            }
+        }else{
+            div.innerHTML = `<div class="accordion-body">Comment List Empty</div>`;
+        }
+    })
 }

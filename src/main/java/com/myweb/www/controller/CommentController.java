@@ -1,5 +1,10 @@
 package com.myweb.www.controller;
 
+import java.util.List;
+
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +33,15 @@ public class CommentController {
 		int isReg = csv.register(cvo);
 		
 		return isReg > 0 ? "1" : "0";
+	}
+	
+	@GetMapping(value="/{bno}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<CommentVO> list(@PathVariable int bno){
+		List<CommentVO> list = csv.getList(bno);
+		
+		log.info("@@list >> {}", list);
+		
+		return list;
 	}
 	
 }

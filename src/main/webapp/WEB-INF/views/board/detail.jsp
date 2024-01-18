@@ -78,7 +78,6 @@ input {
 		</div>
 	</div>
 
-
 	<br> <a href="/board/list">
 		<button type="button" class="btn btn-secondary">List</button>
 	</a> <a href="/board/modify/${bvo.bno }">
@@ -102,7 +101,9 @@ input {
 
 
 <script type="text/javascript" src="/resources/js/boardComment.js"></script>
-
+<script>
+	spreadCommentList(bnoVal);
+</script>
 
 
 

@@ -5,6 +5,7 @@
 <jsp:include page="layout/header.jsp"></jsp:include>
 
 <div class="container my-3" style="text-align: center;">
+	<h1>스프링 개인프로젝트</h1>
 	<h3>Spring makes programming Java quicker, easier, and safer for
 		everybody. <br>
 		Spring’s focus on speed, simplicity, and productivity has
