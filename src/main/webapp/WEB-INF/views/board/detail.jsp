@@ -77,6 +77,26 @@ input {
 			</div>
 		</div>
 	</div>
+	
+		<!-- Modal창 -->
+	<div class="modal" id="myModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">writer</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" id="cmtTextMod">
+						<button type="button" class="btn btn-primary" id="cmtModBtn">Post</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 
 	<br> <a href="/board/list">
 		<button type="button" class="btn btn-secondary">List</button>

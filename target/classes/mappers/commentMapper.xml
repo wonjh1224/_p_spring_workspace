@@ -11,7 +11,15 @@ values(#{bno}, #{writer}, #{content})
 </insert>
 
 <select id="selectList" resultType="com.myweb.www.domain.CommentVO">
-select * from comment where bno = #{bno}
+select * from comment where bno = #{bno} order by cno desc
 </select>
+
+<update id="update">
+update comment set content = #{content} where cno = #{cno}
+</update>
+
+<delete id="delete">
+delete from comment where cno = #{cno}
+</delete>
 
 </mapper>
