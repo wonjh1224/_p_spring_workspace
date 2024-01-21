@@ -10,4 +10,8 @@ public interface CommentDAO {
 
 	List<CommentVO> selectList(int bno);
 
+	int update(CommentVO cvo);
+
+	int delete(int cno);
+
 }

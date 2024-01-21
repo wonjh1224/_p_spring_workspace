@@ -16,7 +16,7 @@ a {
 	<h2>글쓰기</h2>
 	<br>
 
-	<form action="/board/register" method="post">
+	<form action="/board/register" method="post" enctype="multipart/form-data">
 
 		<div class="mb-3">
 			<label for="title" class="form-label">제목</label> <input
@@ -35,6 +35,19 @@ a {
 			<textarea class="form-control" name="content" id="content" rows="3"
 				placeholder="content"></textarea>
 		</div>
+		
+			<!-- file 입력 라인 추가 -->
+		<div class="mb-3">
+			<label for="file" class="form-label">files..</label>
+			 <input type="file" name="files" class="form-control" id="files"
+				multiple="multiple" style="display: none;"><br>
+			<button type="button" class="btn btn-success" id="trigger">FileUpload</button>
+		</div>
+		<!-- 파일 목록 표시라인 -->
+		<div class="mb-3" id="fileZone">
+			
+		</div>
+		
 
 		<button type="submit" class="btn btn-secondary" id="regBtn">Register</button>
                         
@@ -43,3 +56,6 @@ a {
 
 
 <jsp:include page="../layout/footer.jsp"></jsp:include>
+
+<script src="/resources/js/boardRegister.js"></script> 
+

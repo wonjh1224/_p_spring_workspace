@@ -16,7 +16,7 @@ input {
 </style>
 
 <div class="container-md">
-	<c:set value="${bvo }" var="bvo" />
+ 	<c:set value="${bdto.bvo }" var="bvo"/> 
 	<h2>게시판</h2>
 	<br>
 
@@ -51,6 +51,44 @@ input {
 		<textarea class="form-control" name="content" id="content" rows="3"
 			readonly="readonly">${bvo.content }</textarea>
 	</div>
+	
+	
+	<!-- 파일 표시 라인 -->
+	<c:set value="${bdto.flist }" var="flist" />
+
+	<div class="mb-3">
+		<label for="content" class="form-label">파일</label>
+		<ul class="list-group list-group-flush">
+			<c:forEach items="${flist }" var="fvo">
+				<li class="list-group-item">
+					<c:choose>
+					
+						<c:when test="${fvo.fileType == 1 }">
+							<div>
+									<img alt="" src="/upload/${fvo.saveDir }/${fvo.uuid}_th_${fvo.fileName}">
+							</div>
+						</c:when>
+						
+						<c:otherwise>
+							<div>
+								<!-- 일반 파일 표시할 아이콘 -->
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+  <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+</svg>
+							</div>
+						</c:otherwise>
+						
+					</c:choose>
+						<div class="ms-2 me-auto">
+							<div class="fw-bold"> <a href="/upload/${fvo.saveDir }/${fvo.uuid}_${fvo.fileName}" download>${fvo.fileName }</a> </div>
+							<span class="badge text-bg-dark">${Math.round(fvo.fileSize/1024.0)}KB</span>
+						</div>
+				</li>			
+			</c:forEach>
+		</ul>
+</div>
+	
 
 	<!-- 댓글 등록 라인 -->
 	<div class="input-group mb-3">
@@ -77,6 +115,26 @@ input {
 			</div>
 		</div>
 	</div>
+	
+		<!-- Modal창 -->
+	<div class="modal" id="myModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">writer</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" id="cmtTextMod">
+						<button type="button" class="btn btn-primary" id="cmtModBtn">Post</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 
 	<br> <a href="/board/list">
 		<button type="button" class="btn btn-secondary">List</button>
@@ -88,7 +146,8 @@ input {
 </div>
 
 <script>
-	let bnoVal = `<c:out value="${bvo.bno}"/>`;
+	let bnoVal = `<c:out value="${BoardDTO.bvo.bno}"/>`;
+	console.log(bnoVal);
 </script>
 
 <script type="text/javascript">

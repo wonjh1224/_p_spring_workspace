@@ -2,12 +2,13 @@ package com.myweb.www.repository;
 
 import java.util.List;
 
+
 import com.myweb.www.domain.BoardVO;
 import com.myweb.www.domain.PaginVO;
 
 public interface BoardDAO {
 
-	void insert(BoardVO bvo);
+	int insert(BoardVO bvo);
 
 	BoardVO selectOne(int bno);
 
@@ -24,6 +25,7 @@ public interface BoardDAO {
 	int selectCount(PaginVO pgvo);
 
 	List<BoardVO> selectList(PaginVO pgvo);
+
 
 
 
