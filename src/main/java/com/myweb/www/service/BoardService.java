@@ -16,7 +16,7 @@ public interface BoardService {
 
 	BoardDTO detail(int bno);
 
-	int modify(BoardVO bvo);
+	int modify(BoardDTO boardDTO);
 
 	int updateReadCount(int bno);
 

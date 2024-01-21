@@ -11,7 +11,7 @@ a {
 }
 </style>
 
-<form action="/board/modify" method="post">
+<form action="/board/modify" method="post" enctype="multipart/form-data">
 	<div class="container-md">
 		<h2>수정 게시판</h2>
 		<br>
@@ -115,12 +115,14 @@ a {
 			<button type="button" class="btn btn-danger">remove</button>
 		</a>
 		
-	
 	</div>
 </form>
 
 
 
+<script src="/resources/js/boardModify.js"></script> 
+
+<script src="/resources/js/boardRegister.js"></script> 
 
 
 

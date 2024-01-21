@@ -51,7 +51,7 @@ public class BoardController {
 		}
 
 		int isOk = bsv.register(new BoardDTO(bvo, flist));
-		re.addAttribute("isOk", isOk);
+		re.addFlashAttribute("isOk", isOk);
 
 		long bno = bsv.getBno();
 
@@ -100,12 +100,20 @@ public class BoardController {
 	}
 
 	@PostMapping("modify")
-	public String modify(BoardVO bvo, RedirectAttributes re) {
+	public String modify(BoardVO bvo, RedirectAttributes re,
+			@RequestParam(name="files", required = false)MultipartFile[] files) {
+		
 		isReadCount = false;
 
 		log.info("@@ bvo >> {}", bvo);
+		
+		List<FileVO> flist = null;
+		
+		if(files[0].getSize() > 0) {
+			flist = fh.uploadFiles(files);
+		}
 
-		int isMod = bsv.modify(bvo);
+		int isMod = bsv.modify(new BoardDTO(bvo, flist));
 
 		re.addFlashAttribute("isMod", isMod);
 

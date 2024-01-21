@@ -62,12 +62,23 @@ public class BoardServiceImpl implements BoardService{
 		return bdto;
 	}
 
+	@Transactional
 	@Override
-	public int modify(BoardVO bvo) {
+	public int modify(BoardDTO bdto) {
 		// TODO Auto-generated method stub
-		int isOk = bdao.update(bvo);
+		int isOk = bdao.update(bdto.getBvo());
+		if(bdto.getFlist()==null) {
+			return isOk;			
+		}
+		//bvo insert후 파일도 있다면
+		if(isOk > 0 && bdto.getFlist().size() > 0) {
+			long bno = bdao.getBno();
+			for(FileVO fvo : bdto.getFlist()) {
+				fvo.setBno(bdto.getBvo().getBno());
+				isOk *= fdao.insertFile(fvo);
+			}
+		}
 		return isOk;
-		
 	}
 
 	@Override

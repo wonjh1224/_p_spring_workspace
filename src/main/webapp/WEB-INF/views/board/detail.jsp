@@ -146,15 +146,27 @@ input {
 </div>
 
 <script>
-	let bnoVal = `<c:out value="${BoardDTO.bvo.bno}"/>`;
+	let bnoVal = `<c:out value="${bdto.bvo.bno}"/>`;
 	console.log(bnoVal);
 </script>
 
 <script type="text/javascript">
+const isOk = `<c:out value = "${isOk}"/>`;
+
+console.log(isOk);
+
+if (isOk == 1) {
+	alert("등록 성공")
+}
+</script>
+
+<script type="text/javascript">
+
 	const isMod = `<c:out value = "${isMod}"/>`;
 	if (isMod == 1) {
 		alert("수정 성공")
 	}
+	
 </script>
 
 
