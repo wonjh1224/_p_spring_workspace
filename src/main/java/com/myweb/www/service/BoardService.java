@@ -26,6 +26,8 @@ public interface BoardService {
 
 	long getBno();
 
+	int removeFile(String uuid);
+
 
 
 

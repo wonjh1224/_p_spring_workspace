@@ -104,6 +104,12 @@ public class BoardServiceImpl implements BoardService{
 		return bdao.getBno();
 	}
 
+	@Override
+	public int removeFile(String uuid) {
+		// TODO Auto-generated method stub
+		return fdao.deleteFile(uuid);
+	}
+
 
 
 

@@ -120,9 +120,9 @@ a {
 
 
 
+<script src="/resources/js/boardRegister.js"></script> 
 <script src="/resources/js/boardModify.js"></script> 
 
-<script src="/resources/js/boardRegister.js"></script> 
 
 
 
