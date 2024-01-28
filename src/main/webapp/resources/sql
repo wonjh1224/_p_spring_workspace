@@ -1,0 +1,100 @@
+DB 생성
+
+1. DB 생성 / User 생성 
+- root 계정으로 DB생성
+
+-- DB 생성 구문
+create database mywebdb;
+
+-- user 생성 구문
+create user 'mywebUser'@'localhost'
+identified by 'mysql' ;
+
+-- user 권한 부여
+grant all privileges on mywebdb.* to
+'mywebUser'@'localhost' with grant option;
+
+-- 권한 설정 완료
+flush privileges;
+
+-- board 테이블 생성 --
+create table board(
+bno bigint not null auto_increment,
+title varchar(200) not null,
+writer varchar(200) not null,
+content text not null,
+reg_at datetime default now(),
+mod_at datetime default now(),
+read_count int default 0,
+cmt_qty int default 0,
+has_file int default 0,
+primary key(bno));
+
+-- 2024.01.17 --
+학원
+-- board --
+1.register
+2.list
+3.detail
+4.modify
+5.delete
+집
+1.paging
+-- 2024.01.18 --
+학원
+-- board -- 
+search
+
+-- comment --
+CREATE TABLE comment(
+cno BIGINT AUTO_INCREMENT,
+bno BIGINT NOT NULL,
+writer VARCHAR(100) NOT NULL,
+content TEXT NOT NULL,
+reg_at DATETIME DEFAULT NOW(),
+mod_at DATETIME DEFAULT NOW(),
+PRIMARY KEY(cno));
+
+-- 2024.01.19 -- 
+학원
+comment (더보기 없이)
+등록, 리스트, 수정(모달), 삭제
+
+집
+
+FILE TABLE 생성
+CREATE TABLE file(
+uuid VARCHAR(256) NOT NULL,
+save_dir VARCHAR(256) NOT NULL,
+file_name VARCHAR(256) NOT NULL,
+file_type TINYINT(1) DEFAULT 0,
+bno BIGINT,
+file_size BIGINT,
+reg_at DATETIME DEFAULT NOW(),
+PRIMARY KEY(uuid));
+
+FileVO 생성
+
+보드 register.jsp에 file upload 관련 입력 라인 추가.
+
+boardRegister.js 생성 및 jsp에서 연결
+
+이번에는 이미지 파일뿐만 아니라 다른 파일들도 받아들일 수 있음
+단, 이미지 파일만 타입1로 만들 예정...
+
+js 작성 후 jsp에서 폼태그에 multipart/form-data 추가
+
+컨트롤러에서 insert 메서드 수정
+
+FileHandler 생성 및 로직 작성
+
+BoardDTO 생성 및 완성
+
+서비스임플에서 insert 메서드 수정
+
+fileDAO, fileMapper 생성
+
+-- 2024.01.21 -- 
+파일 등록,
+파일 디테일, 수정페이지 까지만
+
