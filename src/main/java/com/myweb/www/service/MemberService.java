@@ -17,9 +17,9 @@ public interface MemberService {
 
 	void modify(MemberVO mvo);
 
-
 	List<AuthVO> getAuth(String email);
 
-	List<String> getEamilList();
+	int getEmail(String email);
+
 
 }

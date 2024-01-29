@@ -25,7 +25,9 @@ public interface MemberDAO {
 
 	List<AuthVO> selectAuth(String email);
 
-	List<String> selectEamil();
+	int selectEamil(String email);
+
+
 
 
 

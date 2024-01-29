@@ -43,8 +43,9 @@
 		select * from auth_member where email = #{email}
 	</select>
 	
-	<select id="selectEamil" resultType="String">
-		select eamil from member
+	<select id="selectEamil" resultType="int">
+		select count(email) from member where email = #{email}
 	</select>
+	
 
 </mapper>

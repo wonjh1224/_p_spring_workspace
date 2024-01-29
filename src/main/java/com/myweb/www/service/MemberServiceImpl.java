@@ -90,10 +90,11 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public List<String> getEamilList() {
+	public int getEmail(String email) {
 		// TODO Auto-generated method stub
-		return mdao.selectEamil();
+		return mdao.selectEamil(email);
 	}
+
 
 
 

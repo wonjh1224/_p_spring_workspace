@@ -1,14 +1,11 @@
 package com.myweb.www.controller;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -91,13 +88,17 @@ public class MemberController {
 		log.info(">>> Principle >> email > {}", email);
 		log.info("p.getName {}", p.getName());
 		m.addAttribute("mvo", msv.detail(email));
+		
+		if(p.getName().equals("1")) {
+			return "/member/modify";						
+		}
+		
 		if(p.getName().equals(email)) {
 			return "/member/modify";			
 		}else {
 			return "index";			
 		}
 		
-
 	}
 	
 	@PostMapping("/modify")
@@ -115,16 +116,13 @@ public class MemberController {
 	
 
 	@ResponseBody
-	@GetMapping(value = "/email", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<String> eamilList(){
+	@GetMapping("/{email}")
+	public String validationEmail(@PathVariable("email") String email){
 		
-		List<String> list = msv.getEamilList();
-		log.info("list {}",list);
-		log.info("왜 안돼?");
-		
-		return list;
-		
+		log.info(">>> email {}",email);
+		int isOk = msv.getEmail(email);
+		return isOk > 0 ? "1" : "0";
+
+					
 	}
-	
-	
 }
